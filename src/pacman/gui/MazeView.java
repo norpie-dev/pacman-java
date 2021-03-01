@@ -9,7 +9,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.Random;
-import java.util.function.Supplier;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,6 +21,7 @@ import pacman.Maze;
 import pacman.MazeDescriptions;
 import pacman.MazeMap;
 
+@SuppressWarnings("serial")
 public class MazeView extends JPanel {
 	
 	private static int squareSize = 30;

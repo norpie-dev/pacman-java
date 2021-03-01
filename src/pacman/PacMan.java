@@ -1,23 +1,41 @@
 package pacman;
 
 /**
- * Each instance of this class represents the player-controlled Pac-Man character in a Pac-Man maze.
+ * Each instance of this class represents the player-controlled Pac-Man
+ * character in a Pac-Man maze.
  */
 public class PacMan {
 	
-	public Square getSquare() { throw new RuntimeException("Not yet implemented"); }
-	
-	public int getNbLives() { throw new RuntimeException("Not yet implemented"); }
+	private Square square;
+	private int nbLives;
 
-	public PacMan(int nbLives, Square square) {
-		throw new RuntimeException("Not yet implemented");
+	// TODO: DOCUMENTATION
+	public Square getSquare() {
+		return this.square;
 	}
-	
-	public void setSquare(Square square) { throw new RuntimeException("Not yet implemented"); }
-	
+
+	// TODO: DOCUMENTATION
+	public int getNbLives() {
+		return this.nbLives;
+	}
+
+	// TODO: DOCUMENTATION
+	public PacMan(int nbLives, Square square) {
+		this.nbLives = nbLives;
+		this.square = square;
+	}
+
+	// TODO: DOCUMENTATION
+	public void setSquare(Square square) {
+		this.square = square;
+	}
+
 	/**
 	 * Decreases this Pac-Man character's number of lives by one.
 	 */
-	public void die() { throw new RuntimeException("Not yet implemented"); }
+	// TODO: DOCUMENTATION
+	public void die() {
+		this.nbLives--;
+	}
 
 }
