@@ -8,17 +8,17 @@ import java.util.ArrayList;
  * 0.
  */
 public class Square {
-	
+
 	private MazeMap mazeMap;
 	private int row;
 	private int column;
 	private boolean passable;
 
-	private Square(MazeMap mazeMap, int row, int column) {
+	private Square(MazeMap mazeMap, int row, int column, boolean passable) {
 		this.mazeMap = mazeMap;
 		this.row = row;
 		this.column = column;
-		this.passable = mazeMap.isPassable(row, column);
+		this.passable = passable;
 	}
 
 	// TODO: DOCUMENTATION
@@ -43,7 +43,7 @@ public class Square {
 
 	// TODO: DOCUMENTATION
 	public static Square of(MazeMap mazeMap, int rowIndex, int columnIndex) {
-		return new Square(mazeMap, rowIndex, columnIndex);
+		return new Square(mazeMap, rowIndex, columnIndex, mazeMap.isPassable(rowIndex, columnIndex));
 	}
 
 	/**
@@ -55,18 +55,18 @@ public class Square {
 	public Square getNeighbor(Direction direction) {
 		// Implementation hint: use method java.lang.Math.floorMod.
 		switch (direction) {
-			case DOWN -> {
-				return Square.of(getMazeMap(), getRowIndex() + 1, getColumnIndex());
-			}
-			case LEFT -> {
-				return Square.of(getMazeMap(), getRowIndex(), getColumnIndex() - 1);
-			}
-			case RIGHT -> {
-				return Square.of(getMazeMap(), getRowIndex(), getColumnIndex() +  1);
-			}
-			case UP -> {
-				return Square.of(getMazeMap(), getRowIndex() - 1, getColumnIndex());
-			}
+		case DOWN -> {
+			return Square.of(mazeMap, Math.floorMod(row + 1, mazeMap.getHeight()), column);
+		}
+		case UP -> {
+			return Square.of(mazeMap, Math.floorMod(row - 1, mazeMap.getHeight()), column);
+		}
+		case LEFT -> {
+			return Square.of(mazeMap, row, Math.floorMod(column - 1, mazeMap.getWidth()));
+		}
+		case RIGHT -> {
+			return Square.of(mazeMap, row, Math.floorMod(column + 1, mazeMap.getWidth()));
+		}
 		}
 		return null;
 	}
@@ -103,15 +103,12 @@ public class Square {
 	 */
 	// TODO: DOCUMENTATION
 	public boolean equals(Square other) {
-		if (!other.getMazeMap().equals(this.getMazeMap())) {
+		if (this.row != other.getRowIndex())
 			return false;
-		}
-		if (other.getColumnIndex() != this.getColumnIndex()) {
+		if (this.column != other.getColumnIndex())
 			return false;
-		}
-		if (other.getRowIndex() != this.getColumnIndex()) {
+		if (this.mazeMap != other.getMazeMap())
 			return false;
-		}
 		return true;
 	}
 
