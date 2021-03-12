@@ -41,15 +41,15 @@ class GhostTest {
 	
 	@Test
 	void testGhost() {
-		// IllegalArgumentException | square == null
+		// IllegalArgumentException - square == null
 		assertThrows(IllegalArgumentException.class, () -> new Ghost(null, startDirection));
-		// IllegalArgumentCase | direction == null
+		// IllegalArgumentCase - direction == null
 		assertThrows(IllegalArgumentException.class, () -> new Ghost(startSquare, null));
 	}
 
 	@Test
 	void testSetSquare() {
-		// IllegalArgumentException | square == null
+		// IllegalArgumentException - square == null
 		assertThrows(IllegalArgumentException.class, () -> ghost.setSquare(null));
 		// Normal Case
 		ghost = new Ghost(TestUtil.getSquare(1, 1, mazeMap), startDirection);
@@ -59,7 +59,7 @@ class GhostTest {
 
 	@Test
 	void testSetDirection() {
-		// IllegalArgumentException | square == null
+		// IllegalArgumentException - square == null
 		assertThrows(IllegalArgumentException.class, () -> ghost.setDirection(null));
 		// Normal Case
 		ghost = new Ghost(TestUtil.getSquare(1, 1, mazeMap), Direction.LEFT);

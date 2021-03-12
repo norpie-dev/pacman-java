@@ -39,9 +39,9 @@ class PacManTest {
 
 	@Test
 	void testPacMan() {
-		// IllegalArgumentException | square == null
+		// IllegalArgumentException - square == null
 		assertThrows(IllegalArgumentException.class, () -> new PacMan(3, null));
-		// IllegalArgumentException | 0 >= nbLives
+		// IllegalArgumentException - 0 >= nbLives
 		assertThrows(IllegalArgumentException.class, () -> new PacMan(0, startSquare));
 		// Normal Case
 		assertDoesNotThrow(() -> new PacMan(3, startSquare));
@@ -49,7 +49,7 @@ class PacManTest {
 
 	@Test
 	void testSetSquare() {
-		// IllegalArgumentException | square == null
+		// IllegalArgumentException - square == null
 		assertThrows(IllegalArgumentException.class, () -> pacman.setSquare(null));
 		// Normal Case
 		Square goToSquare = TestUtil.getSquare(1, 1, mazeMap);

@@ -1,15 +1,11 @@
 package pacman.tests;
 
-import java.util.Random;
-
-import pacman.Maze;
-import pacman.MazeDescriptions;
 import pacman.MazeMap;
 import pacman.Square;
 
 public class TestUtil {
 
-	public static Maze getMaze() {
+	/*public static Maze getMaze() {
 		return MazeDescriptions.createMazeFromDescription(new Random(), """
 				#####################
 				#.........#.........#
@@ -39,10 +35,12 @@ public class TestUtil {
 				#...................#
 				#####################
 				""");
-	}
+	}*/
 
 	public static MazeMap getMazeMap() {
-		return getMaze().getMap();
+		boolean[] passable = new boolean[100];
+		passable[1] = true;
+		return new MazeMap(10, 10, passable);
 	}
 	
 	public static Square getSquare(int row, int column, MazeMap mazeMap) {

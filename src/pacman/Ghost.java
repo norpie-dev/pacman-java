@@ -5,8 +5,8 @@ import java.util.Random;
 /**
  * Each instance of this class represents a ghost in a Pac-Man maze.
  * 
- * @invar square cannot be null | getSquare() != null
- * @invar direction cannot be null | getDirection() != null
+ * @invar getSquare() cannot be null | getSquare() != null
+ * @invar getDirection() cannot be null | getDirection() != null
  * 
  */
 public class Ghost {
@@ -14,14 +14,14 @@ public class Ghost {
 	/**
 	 * Stores this instance's square object.
 	 * 
-	 * @invar square cannot be null | square != null
+	 * @invar {@code square} cannot be {@code null} | square != null
 	 */
 	private Square square;
 	
 	/**
 	 * Stores this instance's direction enum object.
 	 * 
-	 * @invar direction cannot be null | direction != null
+	 * @invar {@code direction} cannot be {@code null} | direction != null
 	 */
 	private Direction direction;
 
@@ -29,18 +29,20 @@ public class Ghost {
 	 * Returns this instance's square object.
 	 * 
 	 * @basic
+	 * @post {@code result} cannot be {@code null} | result != null
 	 */
 	public Square getSquare() {
-		return this.square;
+		return square;
 	}
 
 	/**
 	 * Returns the direction in which this ghost will preferably move next.
 	 * 
 	 * @basic
+	 * @post {@code result} cannot be {@code null} | result != null
 	 */
 	public Direction getDirection() {
-		return this.direction;
+		return direction;
 	}
 
 	/**
@@ -48,7 +50,6 @@ public class Ghost {
 	 * 
 	 * @throws IllegalArgumentException | square == null
 	 * @throws IllegalArgumentException | direction == null
-	 * 
 	 * @post | getSquare() == square
 	 * @post | getDirection() == direction
 	 */
@@ -64,7 +65,7 @@ public class Ghost {
 	 * Sets the square of the current instance.
 	 * 
 	 * @throws IllegalArgumentException | square == null
-	 * @mutates_properties | getSquare()
+	 * @mutates | this, getSquare()
 	 * @post | getSquare() == square
 	 */
 	public void setSquare(Square square) {
@@ -78,7 +79,7 @@ public class Ghost {
 	 * Sets the direction enum of the current instance.
 	 * 
 	 * @throws IllegalArgumentException | direction == null
-	 * @mutates_properties | getDirection()
+	 * @mutates | this, getDirection()
 	 * @post | getDirection() == direction
 	 */
 	public void setDirection(Direction direction) {

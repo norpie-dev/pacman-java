@@ -6,16 +6,22 @@ package pacman;
  * passable or not.
  * 
  * @immutable
+ * @invar {@code getWidth()} cannot be negative | getWidth() >= 0
+ * @invar {@code getHeight()} cannot be negative | getHeight() >= 0
  */
 public class MazeMap {
 
 	/**
-	 * Stores this instance's width.
+	 * Stores this instance's {@code width}.
+	 * 
+	 * @invar {@code width} cannot be negative | width >= 0
 	 */
 	private int width;
 	
 	/**
-	 * Stores this instance's height.
+	 * Stores this instance's {@code height}.
+	 * 
+	 * @invar {@code height} cannot be negative | height >= 0
 	 */
 	private int height;
 	
@@ -23,13 +29,14 @@ public class MazeMap {
 	 * Stores this instance's array of passables. 
 	 * 
 	 * @representationObject
-	 * @invar passable cannot be null | passable != null
+	 * @invar {@code passable} cannot be {@code null} | passable != null
 	 */
 	private boolean[] passable;
 	
 	/**
-	 * Returns the width (i.e. the number of columns) of this maze map.
+	 * Returns the {@code width} (i.e. the number of columns) of this maze map.
 	 * 
+	 * @post {@code result} is nonnegative | result >= 0
 	 * @basic
 	 */
 	public int getWidth() {
@@ -37,8 +44,9 @@ public class MazeMap {
 	}
 
 	/**
-	 * Returns the height (i.e. the number of rows) of this maze map.
+	 * Returns the {@code height} (i.e. the number of rows) of this maze map.
 	 * 
+	 * @post {@code result} is nonnegative | result >= 0
 	 * @basic
 	 */
 	public int getHeight() {
@@ -52,7 +60,6 @@ public class MazeMap {
 	 * 
 	 * @throws IllegalArgumentException | 0 > rowIndex | 0 > columnIndex
 	 * @throws IllegalArgumentException | rowIndex >= getHeight() | columnIndex >= getWidth()
-	 * @inspects | this
 	 */
 	public boolean isPassable(int rowIndex, int columnIndex) {
 		if(0 > rowIndex | 0 > columnIndex) {
@@ -70,6 +77,8 @@ public class MazeMap {
 	 * specify the passability of the maze positions in the first row of the maze).
 	 * 
 	 * @throws IllegalArgumentException | passable == null
+	 * @throws IllegalArgumentException | width * height != passable.length
+	 * @throws IllegalArgumentException | 0 >= width | 0 >= height
 	 * @post | getWidth() == width
 	 * @post | getHeight() == height
 	 * @inspects | passable
@@ -80,6 +89,9 @@ public class MazeMap {
 		}
 		if(width * height != passable.length) {
 			throw new IllegalArgumentException("width and height do not match the size of the passable array");
+		}
+		if(width < 0 | height < 0) {
+			throw new IllegalArgumentException("width and height cannot be negative");
 		}
 		this.width = width;
 		this.height = height;

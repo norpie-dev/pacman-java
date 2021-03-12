@@ -41,12 +41,12 @@ class SquareTest {
 	
 	@Test
 	void testOf() {
-		// IllegalArgumentException | mazeMap == null
+		// IllegalArgumentException - mazeMap == null
 		assertThrows(IllegalArgumentException.class, () -> Square.of(null, 0, 0));
-		// IllegalArgumentException | row out of bounds
+		// IllegalArgumentException - row out of bounds
 		assertThrows(IllegalArgumentException.class, () -> Square.of(mazeMap, -1, 0));
 		assertThrows(IllegalArgumentException.class, () -> Square.of(mazeMap, 1000, 0));
-		// IllegalArgumentException | column out of bounds
+		// IllegalArgumentException - column out of bounds
 		assertThrows(IllegalArgumentException.class, () -> Square.of(mazeMap, 0, -1));
 		assertThrows(IllegalArgumentException.class, () -> Square.of(mazeMap, 0, 1000));
 	}
@@ -59,24 +59,25 @@ class SquareTest {
 
 	@Test
 	void testCanMove() {
-		// IllegalArgumentException | direction == null
+		// IllegalArgumentException - direction == null
 		assertThrows(IllegalArgumentException.class, () -> square.canMove(null));
 		// Normal Case
-		assertEquals(square.canMove(Direction.DOWN), true);
+		assertEquals(square.canMove(Direction.DOWN), false);
 	}
 
 	@Test
 	void testGetPassableDirectionsExcept() {
-		// IllegalArgumentException | direction == null
+		square = TestUtil.getSquare(0, 0, mazeMap);
+		// IllegalArgumentException - direction == null
 		assertThrows(IllegalArgumentException.class, () -> square.getPassableDirectionsExcept(null));
 		// Normal Cases
-		assertEquals(square.getPassableDirectionsExcept(Direction.RIGHT).length, 1);
+		assertEquals(square.getPassableDirectionsExcept(Direction.RIGHT).length, 0);
 		assertEquals(square.getPassableDirectionsExcept(Direction.DOWN).length, 1);
 	}
 	
 	@Test
 	void testEquals() {
-		// IllegalArgumentException | other == null
+		// IllegalArgumentException - other == null
 		assertThrows(IllegalArgumentException.class, () -> square.equals(null));
 		// Normal Cases
 		assertEquals(square.equals(Square.of(mazeMap, 1, 0)), false);

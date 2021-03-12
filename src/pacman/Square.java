@@ -13,19 +13,23 @@ import java.util.Arrays;
 public class Square {
 
 	/**
-	 * Stores the MazeMap of the current instance.
+	 * Stores the {@link MazeMap} of the current instance.
 	 * 
-	 * @invar mazeMap cannot be null | mazeMap != null
+	 * @invar {@code mazeMap} cannot be {@code null} | mazeMap != null
 	 */
 	private MazeMap mazeMap;
 
 	/**
-	 * Stores the row index of the current instance.
+	 * Stores the {@code row} index of the current instance.
+	 * 
+	 * @invar {@code row} cannot be negative | row >= 0
 	 */
 	private int row;
 
 	/**
-	 * Stores the column index of the current instance.
+	 * Stores the {@code column} index of the current instance.
+	 * 
+	 * @invar {@code column} cannot be negative | column >= 0
 	 */
 	private int column;
 
@@ -35,8 +39,8 @@ public class Square {
 	private boolean passable;
 
 	/**
-	 * Initializes the current object with the given, MazeMap, row index, column
-	 * index, and if the square is passable.
+	 * Initializes the current object with the given, {@code MazeMap}, {@code row} index, {@code column}
+	 * index, and if the square is {@code passable}.
 	 * 
 	 * @post | getMazeMap() == mazeMap
 	 * @post | getRowIndex() == row
@@ -55,14 +59,14 @@ public class Square {
 	 * Returns the MazeMap of the current instance.
 	 * 
 	 * @basic
-	 * @post result cannot be null | result != null
+	 * @post {@code result} cannot be {@code null} | result != null
 	 */
 	public MazeMap getMazeMap() {
 		return this.mazeMap;
 	}
 
 	/**
-	 * Returns the rowIndex of the current instance.
+	 * Returns the {@code row} of the current instance.
 	 * 
 	 * @basic
 	 */
@@ -71,7 +75,7 @@ public class Square {
 	}
 
 	/**
-	 * Returns the columnIndex of the current instance.
+	 * Returns the {@code column} of the current instance.
 	 * 
 	 * @basic
 	 */
@@ -80,7 +84,7 @@ public class Square {
 	}
 
 	/**
-	 * Returns true if the square instance is passable.
+	 * Returns {@code true} if the square instance is passable.
 	 * 
 	 * @basic
 	 */
@@ -95,10 +99,9 @@ public class Square {
 	 * @throws IllegalArgumentException | mazeMap == null
 	 * @throws IllegalArgumentException | !(rowIndex > 0) || rowIndex > mazeMap.getHeight()
 	 * @throws IllegalArgumentException | !(columnIndex > 0) || columnIndex > mazeMap.getWidth()
-	 * 
 	 * @inspects | mazeMap
-	 * 
 	 * @creates | result
+	 * @post {@code result} cannot be {@code null} | result != null
 	 */
 	public static Square of(MazeMap mazeMap, int rowIndex, int columnIndex) {
 		if(mazeMap == null) {
@@ -119,7 +122,7 @@ public class Square {
 	// No formal documentation required
 	public Square getNeighbor(Direction direction) {
 		if(direction == null) {
-			throw new IllegalArgumentException("direction is not either: down, up, right, or left");
+			throw new IllegalArgumentException("direction is null");
 		}
 		// Implementation hint: use method java.lang.Math.floorMod.
 		switch (direction) {
@@ -178,7 +181,6 @@ public class Square {
 	 * and has the same row and column index as this square.
 	 * 
 	 * @throws IllegalArgumentException | other == null
-	 * @inspects | other
 	 */
 	public boolean equals(Square other) {
 		if(other == null) 

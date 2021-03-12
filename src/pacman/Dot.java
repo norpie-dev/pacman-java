@@ -5,14 +5,14 @@ package pacman;
  * a Pac-Man maze.
  * 
  * @immutable
- * @invar getSquare() cannot be null | getSquare() != null
+ * @invar {@code getSquare()} cannot be {@code null} | getSquare() != null
  */
 public class Dot {
 
 	/**
 	 * Stores this instance's square object.
 	 * 
-	 * @invar square cannot be null | square != null
+	 * @invar {@code square} cannot be {@code null} | square != null
 	 */
 	private Square square;
 
@@ -20,10 +20,10 @@ public class Dot {
 	 * Returns this instance's square object.
 	 * 
 	 * @basic
-	 * @post the result is not null | result != null
+	 * @post the {@code result} is not {@code null} | result != null
 	 */
 	public Square getSquare() {
-		return this.square;
+		return square;
 	}
 
 	/**

@@ -31,7 +31,7 @@ class DotTest {
 
 	@Test
 	void testDot() {
-		// IllegalArgumentException | square == null
+		// IllegalArgumentException - square == null
 		assertThrows(IllegalArgumentException.class, () -> new Dot(null));
 	}
 
